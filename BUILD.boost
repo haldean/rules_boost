@@ -276,6 +276,19 @@ boost_library(
 )
 
 boost_library(
+  name = "pool",
+  deps = [
+    ":assert",
+    ":config",
+    ":detail",
+    ":integer",
+    ":limits",
+    ":throw_exception",
+    ":type_traits",
+  ],
+)
+
+boost_library(
   name = "predef",
 )
 
