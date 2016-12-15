@@ -56,7 +56,7 @@ def boost_deps():
   native.new_http_archive(
     name = "boost",
     url = "https://sourceforge.net/projects/boost/files/boost/1.61.0/boost_1_61_0.tar.bz2/download",
-    build_file = "@com_github_nelhage_boost//:BUILD.boost",
+    build_file = "@boost_rules//:BUILD.boost",
     type = "tar.bz2",
     strip_prefix = "boost_1_61_0/",
     sha256 = "a547bd06c2fd9a71ba1d169d9cf0339da7ebf4753849a8f7d6fdb8feee99b640",
