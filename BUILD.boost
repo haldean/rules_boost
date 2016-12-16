@@ -594,6 +594,9 @@ boost_library(
 
 boost_library(
   name = "math",
+  hdrs = [
+    "boost/math_fwd.hpp",
+  ]
 )
 
 boost_library(
