@@ -13,6 +13,17 @@ boost_library(
 )
 
 boost_library(
+  name = "atomic",
+  deps = [
+    ":assert",
+    ":config",
+    ":cstdint",
+    ":memory_order",
+    ":type_traits",
+  ]
+)
+
+boost_library(
   name = "archive",
   deps = [
     ":assert",
@@ -50,7 +61,10 @@ boost_library(
 )
 
 boost_library(
-  name = "blank_fwd",
+  name = "blank",
+  hdrs = [
+    "boost/blank_fwd.hpp",
+  ],
 )
 
 boost_library(
@@ -74,6 +88,29 @@ boost_library(
 
 boost_library(
   name = "checked_delete",
+)
+
+boost_library(
+  name = "chrono",
+  deps = [
+    ":assert",
+    ":config",
+    ":cstdint",
+    ":detail",
+    ":integer",
+    ":move",
+    ":mpl",
+    ":operators",
+    ":predef",
+    ":ratio",
+    ":static_assert",
+    ":system",
+    ":throw_exception",
+    ":typeof",
+    ":type_traits",
+    ":utility",
+    ":version",
+  ],
 )
 
 boost_library(
@@ -155,9 +192,23 @@ boost_library(
 )
 
 boost_library(
+  name = "enable_shared_from_this",
+  deps = [
+    ":smart_ptr",
+  ],
+)
+
+boost_library(
   name = "exception",
   deps = [
     ":config",
+  ],
+)
+
+boost_library(
+  name = "exception_ptr",
+  deps = [
+    ":exception",
   ],
 )
 
@@ -296,6 +347,10 @@ boost_library(
 )
 
 boost_library(
+  name = "memory_order",
+)
+
+boost_library(
   name = "move",
   deps = [
     ":assert",
@@ -383,6 +438,19 @@ boost_library(
     ":concept_check",
     ":optional",
   ]
+)
+
+boost_library(
+  name = "ratio",
+  deps = [
+    ":config",
+    ":core",
+    ":cstdint",
+    ":integer",
+    ":mpl",
+    ":static_assert",
+    ":type_traits",
+  ],
 )
 
 boost_library(
@@ -507,6 +575,46 @@ boost_library(
 )
 
 boost_library(
+  name = "thread",
+  deps = [
+    ":assert",
+    ":atomic",
+    ":bind",
+    ":chrono",
+    ":concept_check",
+    ":config",
+    ":container",
+    ":core",
+    ":cstdint",
+    ":current_function",
+    ":date_time",
+    ":detail",
+    ":enable_shared_from_this",
+    ":exception_ptr",
+    ":function",
+    ":functional",
+    ":intrusive",
+    ":intrusive_ptr",
+    ":io",
+    ":move",
+    ":mpl",
+    ":next_prior",
+    ":optional",
+    ":predef",
+    ":preprocessor",
+    ":scoped_array",
+    ":shared_ptr",
+    ":smart_ptr",
+    ":static_assert",
+    ":system",
+    ":throw_exception",
+    ":tuple",
+    ":type_traits",
+    ":utility",
+  ],
+)
+
+boost_library(
   name = "throw_exception",
   deps = [
     ":current_function",
@@ -569,6 +677,17 @@ boost_library(
 )
 
 boost_library(
+  name = "typeof",
+  deps = [
+    ":config",
+    ":mpl",
+    ":preprocessor",
+    ":type_traits",
+    ":utility",
+  ],
+)
+
+boost_library(
   name = "tr1",
   defines = [
     "BOOST_FALLTHROUGH"
@@ -588,6 +707,8 @@ boost_library(
 boost_library(
   name = "variant",
   deps = [
+    ":blank",
+    ":call_traits",
     ":math",
     ":type_index",
   ]
