@@ -38,6 +38,8 @@ boost_library(
 boost_library(
   name = "asio",
   deps = [
+    ":date_time",
+    ":regex",
     ":system",
     ":throw_exception",
   ],
@@ -45,6 +47,10 @@ boost_library(
 
 boost_library(
   name = "assert",
+)
+
+boost_library(
+  name = "blank_fwd",
 )
 
 boost_library(
@@ -71,7 +77,21 @@ boost_library(
 )
 
 boost_library(
+  name = "concept",
+  deps = [
+    ":config",
+    ":detail",
+    ":mpl",
+    ":preprocessor",
+  ]
+)
+
+boost_library(
   name = "concept_check",
+  deps = [
+    ":assert",
+    ":concept",
+  ]
 )
 
 boost_library(
@@ -105,6 +125,26 @@ boost_library(
 
 boost_library(
   name = "current_function",
+)
+
+boost_library(
+  name = "date_time",
+  deps = [
+    ":algorithm",
+    ":assert",
+    ":config",
+    ":cstdint",
+    ":detail",
+    ":limits",
+    ":mpl",
+    ":operators",
+    ":range",
+    ":shared_ptr",
+    ":static_assert",
+    ":throw_exception",
+    ":tokenizer",
+    ":type_traits",
+  ]
 )
 
 boost_library(
@@ -218,7 +258,33 @@ boost_library(
 )
 
 boost_library(
+  name = "lexical_cast",
+  deps = [
+    ":array",
+    ":config",
+    ":container",
+    ":detail",
+    ":limits",
+    ":math",
+    ":mpl",
+    ":range",
+    ":static_assert",
+    ":throw_exception",
+    ":tokenizer",
+    ":type_traits",
+  ],
+)
+
+boost_library(
   name = "limits",
+)
+
+boost_library(
+  name = "logic",
+  deps = [
+    ":config",
+    ":detail",
+  ]
 )
 
 boost_library(
@@ -253,6 +319,13 @@ boost_library(
     ":serialization",
     ":static_assert",
     ":tuple",
+  ],
+)
+
+boost_library(
+  name = "next_prior",
+  deps = [
+    ":type_traits",
   ],
 )
 
@@ -442,6 +515,33 @@ boost_library(
 )
 
 boost_library(
+  name = "token_functions",
+  deps = [
+    ":assert",
+    ":config",
+    ":detail",
+    ":mpl",
+    ":throw_exception",
+  ],
+)
+
+boost_library(
+  name = "token_iterator",
+  deps = [
+    ":assert",
+    ":iterator",
+    ":token_functions",
+  ],
+)
+
+boost_library(
+  name = "tokenizer",
+  deps = [
+    ":token_iterator",
+  ],
+)
+
+boost_library(
   name = "type",
   deps = [
     ":core",
@@ -480,6 +580,9 @@ boost_library(
 
 boost_library(
   name = "utility",
+  deps = [
+    ":next_prior",
+  ],
 )
 
 boost_library(
