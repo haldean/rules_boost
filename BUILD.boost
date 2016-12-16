@@ -36,6 +36,14 @@ boost_library(
 )
 
 boost_library(
+  name = "asio",
+  deps = [
+    ":system",
+    ":throw_exception",
+  ],
+)
+
+boost_library(
   name = "assert",
 )
 
@@ -308,6 +316,7 @@ boost_library(
   name = "ref",
   deps = [
     ":core",
+    ":detail",
   ],
 )
 
