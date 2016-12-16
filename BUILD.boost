@@ -13,14 +13,23 @@ boost_library(
 )
 
 boost_library(
-  name = "atomic",
+  name = "aligned_storage",
   deps = [
-    ":assert",
-    ":config",
-    ":cstdint",
-    ":memory_order",
     ":type_traits",
-  ]
+  ],
+)
+
+boost_library(
+  name = "any",
+  deps = [
+    ":config",
+    ":mpl",
+    ":static_assert",
+    ":throw_exception",
+    ":type_index",
+    ":type_traits",
+    ":utility",
+  ],
 )
 
 boost_library(
@@ -33,9 +42,21 @@ boost_library(
     ":io",
     ":mpl",
     ":noncopyable",
+    ":pointee",
     ":smart_ptr",
     ":spirit",
   ],
+)
+
+boost_library(
+  name = "atomic",
+  deps = [
+    ":assert",
+    ":config",
+    ":cstdint",
+    ":memory_order",
+    ":type_traits",
+  ]
 )
 
 boost_library(
@@ -79,6 +100,13 @@ boost_library(
 )
 
 boost_library(
+  name = "bucket_sorter",
+  deps = [
+    ":limits",
+  ],
+)
+
+boost_library(
   name = "call_traits",
 )
 
@@ -114,6 +142,48 @@ boost_library(
 )
 
 boost_library(
+  name = "compressed_pair",
+  deps = [
+    ":config",
+    ":detail",
+  ],
+)
+
+boost_library(
+  name = "compute",
+  deps = [
+    ":algorithm",
+    ":array",
+    ":assert",
+    ":chrono",
+    ":config",
+    ":filesystem",
+    ":function",
+    ":function_types",
+    ":fusion",
+    ":iterator",
+    ":lexical_cast",
+    ":make_shared",
+    ":mpl",
+    ":noncopyable",
+    ":optional",
+    ":preprocessor",
+    ":property_tree",
+    ":proto",
+    ":range",
+    ":shared_ptr",
+    ":static_assert",
+    ":throw_exception",
+    ":tuple",
+    ":typeof",
+    ":type_traits",
+    ":utility",
+    ":uuid",
+    ":version",
+  ],
+)
+
+boost_library(
   name = "concept",
   deps = [
     ":config",
@@ -121,6 +191,15 @@ boost_library(
     ":mpl",
     ":preprocessor",
   ]
+)
+
+boost_library(
+  name = "concept_archetype",
+  deps = [
+    ":config",
+    ":iterator",
+    ":mpl",
+  ],
 )
 
 boost_library(
@@ -145,6 +224,15 @@ boost_library(
     ":config",
     ":move",
     ":intrusive",
+  ],
+)
+
+boost_library(
+  name = "container_traits",
+  deps = [
+    ":next_prior",
+    ":unordered_map",
+    ":unordered_set",
   ],
 )
 
@@ -192,6 +280,17 @@ boost_library(
 )
 
 boost_library(
+  name = "disjoint_sets",
+  deps = [
+    ":pending",
+  ],
+  hdrs = [
+    "boost/graph/properties.hpp",
+    "boost/pending/detail/disjoint_sets.hpp",
+  ]
+)
+
+boost_library(
   name = "enable_shared_from_this",
   deps = [
     ":smart_ptr",
@@ -231,9 +330,27 @@ boost_library(
 )
 
 boost_library(
+  name = "format",
+  deps = [
+    ":assert",
+    ":config",
+    ":detail",
+    ":limits",
+    ":optional",
+    ":shared_ptr",
+    ":throw_exception",
+    ":utility",
+  ],
+)
+
+boost_library(
   name = "function",
   deps = [
     ":bind",
+    ":integer",
+  ],
+  hdrs = [
+    "boost/function_equal.hpp",
   ],
 )
 
@@ -249,7 +366,101 @@ boost_library(
 )
 
 boost_library(
+  name = "fusion",
+  deps = [
+    ":call_traits",
+    ":config",
+    ":core",
+    ":detail",
+    ":functional",
+    ":function_types",
+    ":get_pointer",
+    ":mpl",
+    ":preprocessor",
+    ":ref",
+    ":static_assert",
+    ":tuple",
+    ":typeof",
+    ":type_traits",
+    ":utility",
+  ],
+)
+
+boost_library(
   name = "get_pointer",
+)
+
+boost_library(
+  name = "graph",
+  deps = [
+    ":algorithm",
+    ":any",
+    ":array",
+    ":assert",
+    ":bimap",
+    ":bind",
+    ":bucket_sorter.hpp",
+    ":concept",
+    ":concept_archetype",
+    ":concept_check",
+    ":config",
+    ":container_traits.hpp",
+    ":detail",
+    ":detail/int_iterator.hpp",
+    ":disjoint_sets.hpp",
+    ":dynamic_bitset",
+    ":foreach",
+    ":function",
+    ":functional",
+    ":implicit_cast",
+    ":indirect_cmp.hpp",
+    ":integer",
+    ":iterator",
+    ":iterator_adaptors",
+    ":lexical_cast",
+    ":limits",
+    ":make_shared",
+    ":math",
+    ":move",
+    ":mpl",
+    ":multi_index",
+    ":multi_index_container",
+    ":mutable_queue.hpp",
+    ":next_prior",
+    ":none_t",
+    ":operators",
+    ":optional",
+    ":parameter",
+    ":preprocessor",
+    ":property.hpp",
+    ":property_map",
+    ":property_serialize.hpp",
+    ":property_tree",
+    ":queue.hpp",
+    ":range",
+    ":ref",
+    ":relaxed_heap.hpp",
+    ":scoped_ptr",
+    ":serialization",
+    ":shared_array",
+    ":shared_ptr",
+    ":smart_ptr",
+    ":spirit",
+    ":static_assert",
+    ":test",
+    ":throw_exception",
+    ":tti",
+    ":tuple",
+    ":type_traits",
+    ":typeof",
+    ":unordered_map",
+    ":unordered_set",
+    ":utility",
+    ":variant",
+    ":version",
+    ":weak_ptr",
+    ":xpressive",
+  ],
 )
 
 boost_library(
@@ -261,6 +472,14 @@ boost_library(
 
 boost_library(
   name = "is_placeholder",
+)
+
+boost_library(
+  name = "indirect_cmp",
+  deps = [
+    ":config",
+    ":property_map",
+  ],
 )
 
 boost_library(
@@ -279,6 +498,19 @@ boost_library(
   deps = [
     ":detail",
     ":static_assert",
+  ],
+)
+
+boost_library(
+  name = "indirect_reference",
+  deps = [
+  ],
+)
+
+boost_library(
+  name = "integer_log2",
+  deps = [
+    ":integer",
   ],
 )
 
@@ -305,6 +537,21 @@ boost_library(
   name = "io",
   hdrs = [
     "boost/io_fwd.hpp",
+  ],
+)
+
+boost_library(
+  name = "lambda",
+  deps = [
+    ":config",
+    ":detail",
+    ":indirect_reference",
+    ":is_placeholder",
+    ":mpl",
+    ":preprocessor",
+    ":tuple",
+    ":type_traits",
+    ":utility",
   ],
 )
 
@@ -339,6 +586,13 @@ boost_library(
 )
 
 boost_library(
+  name = "make_shared",
+  deps = [
+    ":smart_ptr",
+  ],
+)
+
+boost_library(
   name = "math",
 )
 
@@ -360,11 +614,56 @@ boost_library(
 )
 
 boost_library(
+  name = "mpi",
+  deps = [
+    ":archive",
+    ":assert",
+    ":config",
+    ":function",
+    ":graph",
+    ":integer",
+    ":iterator",
+    ":limits",
+    ":mpl",
+    ":noncopyable",
+    ":optional",
+    ":property_map",
+    ":python",
+    ":scoped_array",
+    ":serialization",
+    ":shared_array",
+    ":shared_ptr",
+    ":static_assert",
+    ":throw_exception",
+    ":type_traits",
+    ":utility",
+  ],
+)
+
+boost_library(
   name = "mpl",
   deps = [
     ":preprocessor",
     ":move",
   ]
+)
+
+boost_library(
+  name = "multi_array",
+  deps = [
+    ":array",
+    ":assert",
+    ":concept_check",
+    ":config",
+    ":functional",
+    ":iterator",
+    ":limits",
+    ":mpl",
+    ":static_assert",
+    ":type",
+    ":type_traits",
+    ":utility",
+  ],
 )
 
 boost_library(
@@ -375,6 +674,37 @@ boost_library(
     ":static_assert",
     ":tuple",
   ],
+)
+
+boost_library(
+  name = "multi_index_container",
+  deps = [
+    ":config",
+    ":detail",
+    ":move",
+    ":mpl",
+    ":multi_index",
+    ":serialization",
+    ":static_assert",
+    ":throw_exception",
+    ":type_traits",
+    ":utility",
+  ],
+  hdrs = [
+    "boost/multi_index_container_fwd.hpp",
+  ]
+)
+
+boost_library(
+  name = "mutable_queue",
+  deps = [
+    ":is_heap",
+    ":mutable_heap",
+    ":property_map",
+  ],
+  hdrs = [
+    "boost/graph/detail/array_binary_tree.hpp",
+  ]
 )
 
 boost_library(
@@ -396,6 +726,43 @@ boost_library(
 )
 
 boost_library(
+  name = "numeric",
+  deps = [
+    ":array",
+    ":assert",
+    ":bind",
+    ":compute",
+    ":concept_check",
+    ":config",
+    ":core",
+    ":cstdint",
+    ":detail",
+    ":function",
+    ":fusion",
+    ":iterator",
+    ":limits",
+    ":logic",
+    ":math",
+    ":mpl",
+    ":multi_array",
+    ":next_prior",
+    ":noncopyable",
+    ":preprocessor",
+    ":range",
+    ":ref",
+    ":serialization",
+    ":shared_array",
+    ":static_assert",
+    ":throw_exception",
+    ":type",
+    ":typeof",
+    ":type_traits",
+    ":units",
+    ":utility",
+  ],
+)
+
+boost_library(
   name = "operators",
 )
 
@@ -409,6 +776,12 @@ boost_library(
 
 boost_library(
   name = "parameter",
+)
+
+boost_library(
+  name = "pointee",
+  deps = [
+  ],
 )
 
 boost_library(
@@ -430,6 +803,138 @@ boost_library(
 
 boost_library(
   name = "preprocessor",
+)
+
+boost_library(
+  name = "program_options",
+  deps = [
+    ":any",
+    ":config",
+    ":detail",
+    ":function",
+    ":iterator",
+    ":lexical_cast",
+    ":noncopyable",
+    ":numeric",
+    ":shared_ptr",
+    ":smart_ptr",
+    ":static_assert",
+    ":throw_exception",
+    ":type_traits",
+    ":version",
+  ],
+)
+
+boost_library(
+  name = "property_map",
+  deps = [
+    ":any",
+    ":assert",
+    ":bind",
+    ":concept_archetype",
+    ":concept_check",
+    ":config",
+    ":cstdint",
+    ":detail",
+    ":function",
+    ":iterator",
+    ":lexical_cast",
+    ":mpl",
+    ":multi_index",
+    ":multi_index_container",
+    ":optional",
+    ":serialization",
+    ":shared_ptr",
+    ":smart_ptr",
+    ":static_assert",
+    ":throw_exception",
+    ":type",
+    ":type_traits",
+    ":utility",
+    ":version",
+    ":weak_ptr",
+  ],
+)
+
+boost_library(
+  name = "property_tree",
+  deps = [
+    ":any",
+    ":assert",
+    ":bind",
+    ":config",
+    ":format",
+    ":iterator",
+    ":limits",
+    ":mpl",
+    ":multi_index",
+    ":multi_index_container",
+    ":next_prior",
+    ":optional",
+    ":range",
+    ":ref",
+    ":serialization",
+    ":static_assert",
+    ":throw_exception",
+    ":type_traits",
+    ":utility",
+  ],
+)
+
+boost_library(
+  name = "proto",
+  deps = [
+    ":config",
+    ":detail",
+    ":fusion",
+    ":get_pointer",
+    ":mpl",
+    ":noncopyable",
+    ":preprocessor",
+    ":range",
+    ":ref",
+    ":static_assert",
+    ":typeof",
+    ":type_traits",
+    ":utility",
+    ":version",
+  ],
+)
+
+boost_library(
+  name = "python",
+  deps = [
+    ":config",
+    ":iterator",
+    ":mpl",
+    ":preprocessor",
+    ":static_assert",
+    ":type",
+    ":type_traits",
+  ],
+)
+
+boost_library(
+  name = "random",
+  deps = [
+    ":assert",
+    ":config",
+    ":cstdint",
+    ":detail",
+    ":integer",
+    ":integer_log2",
+    ":limits",
+    ":math",
+    ":mpl",
+    ":noncopyable",
+    ":operators",
+    ":range",
+    ":static_assert",
+    ":system",
+    ":throw_exception",
+    ":type_traits",
+    ":utility",
+  ],
 )
 
 boost_library(
@@ -522,8 +1027,10 @@ boost_library(
     ":archive",
     ":array",
     ":call_traits",
+    ":compressed_pair",
     ":config",
     ":detail",
+    ":function",
     ":operators",
     ":type_traits",
   ],
@@ -698,6 +1205,26 @@ boost_library(
 )
 
 boost_library(
+  name = "units",
+  deps = [
+    ":config",
+    ":core",
+    ":integer",
+    ":io",
+    ":lambda",
+    ":math",
+    ":mpl",
+    ":preprocessor",
+    ":serialization",
+    ":static_assert",
+    ":typeof",
+    ":type_traits",
+    ":utility",
+    ":version",
+  ],
+)
+
+boost_library(
   name = "utility",
   deps = [
     ":next_prior",
@@ -705,8 +1232,26 @@ boost_library(
 )
 
 boost_library(
+  name = "uuid",
+  deps = [
+    ":assert",
+    ":config",
+    ":core",
+    ":cstdint",
+    ":io",
+    ":random",
+    ":serialization",
+    ":shared_ptr",
+    ":static_assert",
+    ":throw_exception",
+    ":type_traits",
+  ],
+)
+
+boost_library(
   name = "variant",
   deps = [
+    ":aligned_storage",
     ":blank",
     ":call_traits",
     ":math",
@@ -720,4 +1265,11 @@ boost_library(
 
 boost_library(
   name = "visit_each",
+)
+
+boost_library(
+  name = "weak_ptr",
+  deps = [
+    ":smart_ptr",
+  ],
 )

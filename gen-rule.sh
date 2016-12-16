@@ -1,13 +1,14 @@
 #!/bin/bash
 set -eu
 
-# Generates a boost_library rule given an estimate of the deps, pulled from
-# #include statements. The deps are often slightly wrong, but it's a good
-# starting point; it rarely misses things, and often adds things like "lib_fwd"
-# and "lib", when really you just need "lib".
+# Generates a boost_library rule given an estimate of the deps, pulled
+# from #include statements. The deps are often slightly wrong, but it's
+# a good starting point; it rarely misses things, and often adds things
+# like "lib_fwd" and "lib", when really you just need "lib".
 
-SRC=${1:-.}
-echo reading from $SRC
+SRC=$(realpath ${1:-.})
+NAME=$(basename ${SRC%.hpp})
+
 grep -R --no-filename '#include' $SRC \
     | grep -v '//' \
     | grep '[<"]boost' \
@@ -15,6 +16,9 @@ grep -R --no-filename '#include' $SRC \
     | sed -s 's/[\./].*$//' \
     | sort \
     | uniq \
-    | grep -v $(basename $PWD) \
-    | awk 'BEGIN { print "boost_library(\n  name = \"\",\n  deps = [" } { print "    \":" $0 "\"," } END { print "  ],\n)" } '
+    | grep -v $NAME \
+    | awk -v name=$NAME \
+        'BEGIN { print "boost_library(\n  name = \"" name "\",\n  deps = [" }
+         { print "    \":" $0 "\"," }
+         END { print "  ],\n)" }'
 
