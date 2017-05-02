@@ -1184,6 +1184,7 @@ boost_library(
   name = "static_assert",
   deps = [
     ":config",
+    ":detail",
   ],
 )
 
