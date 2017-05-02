@@ -613,10 +613,7 @@ boost_library(
     ":type",
     ":type_traits",
     ":utility",
-    "@zlib_archive//:zlib",
-    "//third_party/bzip2:bzlib",
   ],
-  copts = ["-Ithird_party/bzip2"],
 )
 
 boost_library(
@@ -866,6 +863,10 @@ boost_library(
 )
 
 boost_library(
+  name = "phoenix",
+)
+
+boost_library(
   name = "pointee",
 )
 
@@ -1099,6 +1100,7 @@ boost_library(
     "boost/regex_fwd.hpp",
     "boost/cregex.hpp",
   ],
+  copts = ["-Wno-unused-value"],
 )
 
 boost_library(
@@ -1176,7 +1178,7 @@ boost_library(
     ":ref",
     ":optional",
     ":iostreams",
-    ":pheonix",
+    ":phoenix",
   ],
 )
 
