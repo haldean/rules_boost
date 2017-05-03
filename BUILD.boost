@@ -864,6 +864,9 @@ boost_library(
 
 boost_library(
   name = "phoenix",
+  deps = [
+    ":proto",
+  ]
 )
 
 boost_library(
@@ -1175,10 +1178,13 @@ boost_library(
 boost_library(
   name = "spirit",
   deps = [
-    ":ref",
-    ":optional",
+    ":array",
+    ":foreach",
+    ":foreach_fwd",
     ":iostreams",
+    ":optional",
     ":phoenix",
+    ":ref",
   ],
 )
 
@@ -1415,6 +1421,7 @@ boost_library(
   name = "utility",
   deps = [
     ":next_prior",
+    ":swap",
   ],
 )
 
