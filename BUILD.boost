@@ -1,3 +1,5 @@
+# vim: ft=bzl
+
 load("@boost_rules//:boost/boost.bzl", "boost_library")
 
 boost_library(
@@ -1112,6 +1114,20 @@ boost_library(
     ":none",
     ":optional",
     ":property_map",
+  ],
+)
+
+boost_library(
+  name = "scope_exit",
+  deps = [
+    ":config",
+    ":detail",
+    ":function",
+    ":mpl",
+    ":preprocessor",
+    ":typeof",
+    ":type_traits",
+    ":utility",
   ],
 )
 
