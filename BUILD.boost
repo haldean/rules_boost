@@ -348,6 +348,7 @@ boost_library(
     ":system",
     ":type_traits",
   ],
+  copts = ["-Wno-deprecated-declarations"],
 )
 
 boost_library(
