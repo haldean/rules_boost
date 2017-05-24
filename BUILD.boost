@@ -617,6 +617,7 @@ boost_library(
     ":type_traits",
     ":utility",
   ],
+  linkopts = ["-lz", "-lbz2"],
 )
 
 boost_library(
