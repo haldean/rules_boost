@@ -61,7 +61,7 @@ def boost_library(name, defines=None, includes=None, hdrs=None, srcs=None, deps=
 def boost_deps():
   native.new_http_archive(
     name = "boost",
-    url = "https://sourceforge.net/projects/boost/files/boost/1.64.0/boost_1_64_0.tar.bz2/download",
+    url = "https://dl.bintray.com/boostorg/release/1.64.0/source/boost_1_64_0.tar.bz2",
     build_file = "@boost_rules//:BUILD.boost",
     type = "tar.bz2",
     strip_prefix = "boost_1_64_0/",
